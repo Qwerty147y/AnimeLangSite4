@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeLang - Аниме с английским дубляжом</title>
+    <meta name="description" content="Смотрите любимые аниме в английском дубляже с субтитрами на русском и английском языках">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="showHome()">
+                    <span class="logo-text">AnimeLang</span>
+                </div>
+                
+                <nav class="nav">
+                    <a href="#support" class="nav-link" onclick="showSupport()">
+                        Поддержать нас
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="container">
+                <section class="hero">
+                    <h1 class="hero-title">Добро пожаловать</h1>
+                    <p class="hero-subtitle">Смотрите любимые аниме в английском дубляже с субтитрами на русском и английском языках</p>
+                </section>
+
+                <section class="anime-grid" id="anime-grid">
+                    <div class="loading">Загрузка аниме...</div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Anime Detail Page -->
+        <div id="anime-detail-page" class="page">
+            <div class="container">
+                <button class="back-btn" onclick="showHome()">← На главную</button>
+                
+                <div class="episodes-container" id="episodes-container">
+                    <!-- Episodes will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode Player Page -->
+        <div id="episode-page" class="page">
+            <style>
+                #episode-page .header { display: none; }
+                body.episode-playing .header { display: none; }
+            </style>
+            
+            <div class="video-container" id="video-container">
+                <!-- Video player will be loaded here -->
+            </div>
+            
+            <div class="episode-navigation">
+                <button class="back-to-anime-btn" onclick="backToAnime()">← К сериям</button>
+                
+                <button class="nav-btn prev" id="prev-btn" onclick="goToPreviousEpisode()">
+                    ←
+                </button>
+                
+                <div class="episode-counter" id="episode-counter">
+                    Серия 1
+                </div>
+                
+                <button class="nav-btn next" id="next-btn" onclick="goToNextEpisode()">
+                    →
+                </button>
+            </div>
+        </div>
+
+        <!-- Support Page -->
+        <div id="support-page" class="page">
+            <div class="container">
+                <button class="back-btn" onclick="showHome()">← На главную</button>
+                
+                <div class="support-content">
+                    <h1>Поддержать нас</h1>
+                    <p>Ваша поддержка помогает развивать проект</p>
+                    
+                    <div class="support-description">
+                        Мы создаем этот сайт с любовью и стараемся сделать его лучше каждый день. 
+                        Ваши донаты помогают нам оплачивать хостинг, покупать новый контент и 
+                        улучшать функциональность сайта. Каждый рубль идет на развитие проекта!
+                    </div>
+                    
+                    <div class="support-links">
+                        <a href="https://boosty.to/animelang" target="_blank" class="support-link boosty">
+                            Boosty
+                        </a>
+                        <a href="https://patreon.com/animelang" target="_blank" class="support-link patreon">
+                            Patreon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
