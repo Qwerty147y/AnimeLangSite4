@@ -1,0 +1,220 @@
+/* Компоненты */
+
+/* Anime Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 25px;
+    padding: 40px 0;
+}
+
+.anime-card {
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.anime-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.1), rgba(139, 0, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.anime-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 255, 0, 0.3);
+}
+
+.anime-card:hover::before {
+    opacity: 1;
+}
+
+.anime-banner {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.anime-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.anime-card:hover .anime-banner img {
+    transform: scale(1.1);
+}
+
+/* Episodes List */
+.episodes-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+    padding: 40px 0;
+    justify-content: flex-start;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.episodes-list::-webkit-scrollbar {
+    display: none;
+}
+
+.episode-item {
+    background: linear-gradient(45deg, rgba(139, 0, 255, 0.8), rgba(139, 0, 255, 0.6));
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 18px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(139, 0, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(139, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transform-origin: center;
+}
+
+.episode-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.episode-item:hover {
+    background: linear-gradient(45deg, var(--green), #00cc00);
+    color: var(--black);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 255, 0, 0.4);
+    border-color: var(--green);
+}
+
+.episode-item:hover::before {
+    left: 100%;
+}
+
+/* Video Container */
+.video-container {
+    width: 100%;
+    height: 80vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container iframe {
+    width: 110%;
+    height: 110%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+    object-fit: cover;
+}
+
+/* Episode Navigation */
+.episode-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px 0 40px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.back-to-anime-btn {
+    position: absolute;
+    left: 40px;
+    background: linear-gradient(45deg, var(--green), #00cc00);
+    border: none;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+}
+
+.back-to-anime-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+}
+
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--purple);
+    background: linear-gradient(45deg, rgba(139, 0, 255, 0.2), rgba(139, 0, 255, 0.1));
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(139, 0, 255, 0.2);
+}
+
+.nav-btn:hover:not(.disabled) {
+    background: linear-gradient(45deg, var(--purple), #aa00ff);
+    color: var(--white);
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(139, 0, 255, 0.4);
+}
+
+.nav-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.episode-counter {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--white);
+    min-width: 120px;
+    text-align: center;
+}
